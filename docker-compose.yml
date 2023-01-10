@@ -15,15 +15,15 @@ services:
   web:
     build: .
     command: bash -c " python manage.py collectstatic --no-input && python manage.py makemigrations && python manage.py migrate && gunicorn project.wsgi:application -b 0:8080"
-    depends_on:
-      - db
+#     depends_on:
+#       - db
     volumes:
       - ./src:/src
       - /static:/static
 
-  db:
-    image: postgres:12.2
-    environment:
-      POSTGRES_DB: db
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
+#   db:
+#     image: postgres:12.2
+#     environment:
+#       POSTGRES_DB: db
+#       POSTGRES_USER: admin
+#       POSTGRES_PASSWORD: admin
